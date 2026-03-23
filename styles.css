@@ -381,12 +381,37 @@ a {
   background: #fff;
 }
 
+.visual-card-arch {
+  display: grid;
+  justify-items: center;
+}
+
 .visual-card img,
 .chart-card img,
 .dashboard-card img {
   width: 100%;
   border-radius: 18px;
   border: 1px solid rgba(74, 99, 213, 0.08);
+}
+
+.visual-card-arch img {
+  width: auto;
+  max-width: 100%;
+  max-height: 620px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.pdf-crop-card {
+  padding: 14px;
+}
+
+.pdf-crop-card img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  object-fit: contain;
 }
 
 .visual-card figcaption {
