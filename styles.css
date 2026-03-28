@@ -623,6 +623,27 @@ a {
   color: var(--accent);
 }
 
+.other-project-thumb {
+  margin: 22px 0 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: #fff;
+}
+
+.other-project-thumb img {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(74, 99, 213, 0.08);
+}
+
+.other-project-thumb figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.95rem;
+}
+
 @media (max-width: 1080px) {
   .site-nav-inner,
   .slide {
