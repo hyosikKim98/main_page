@@ -487,6 +487,51 @@ a {
   line-height: 1.7;
 }
 
+.cache-validation-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+  gap: 0;
+  overflow: hidden;
+  border-radius: 26px;
+  background: #e3e7ee;
+}
+
+.cache-chart-panel {
+  margin: 0;
+  padding: 0;
+  background: #f7f9fd;
+}
+
+.cache-chart-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cache-summary-panel {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  padding: 28px 30px;
+  background: #dfe3ea;
+}
+
+.cache-summary-label {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font-size: 1.34rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.cache-summary-panel p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
 .cache-grid {
   grid-template-columns: minmax(0, 1.22fr) minmax(260px, 0.78fr);
 }
@@ -654,6 +699,7 @@ a {
   .summary-layout,
   .dashboard-layout,
   .other-project-head,
+  .cache-validation-layout,
   .cache-grid,
   .ticket-grid {
     grid-template-columns: 1fr;
@@ -749,5 +795,9 @@ a {
 
   .two-up {
     grid-template-columns: 1fr;
+  }
+
+  .cache-summary-panel {
+    padding: 22px 20px 24px;
   }
 }

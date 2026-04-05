@@ -325,12 +325,19 @@
             <div class="detail-row">
               <dt>검증 결과</dt>
               <dd>
-                <figure class="chart-card pdf-crop-card">
-                  <img
-                    src="./assets/portfolio/cache-validation-pdf.png?v=4"
-                    alt="캐싱 검증 결과 이미지"
-                  />
-                </figure>
+                <div class="cache-validation-layout">
+                  <figure class="cache-chart-panel">
+                    <img
+                      src="./assets/portfolio/cache-validation-charts.png"
+                      alt="캐싱과 비캐싱 응답 지연 비교 그래프"
+                    />
+                  </figure>
+                  <div class="cache-summary-panel">
+                    <p class="cache-summary-label">워밍 업 구간 제외</p>
+                    <p>캐싱 - p95 약 18~21ms, p99 약 22~26ms 수준</p>
+                    <p>비캐싱 - p95 약 22~27ms, p99 약 25~28ms 수준</p>
+                  </div>
+                </div>
               </dd>
             </div>
             <div class="detail-row">
