@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="김효식 백엔드 엔지니어 포트폴리오. 문제 정의, 구조 개선, 검증을 중심으로 쇼핑몰 API 서버와 티켓팅 서버 프로젝트를 정리한 웹 포트폴리오입니다."
+    />
+    <meta name="theme-color" content="#f4efe7" />
+    <title>김효식 | Backend Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <a class="brand" href="#top">KIM HYOSIK</a>
+
+          <nav class="site-nav" aria-label="섹션 이동">
+            <a href="#about">About</a>
+            <a href="#principles">Principles</a>
+            <a href="#projects">Projects</a>
+            <a href="#others">Other Works</a>
+          </nav>
+
+          <a class="header-link" href="./assets/docs/portfolio.pdf" target="_blank" rel="noreferrer">
+            PDF 보기
+          </a>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero section">
+          <div class="hero__copy">
+            <p class="eyebrow">Backend Engineer Portfolio</p>
+            <h1>
+              문제를 구조로 풀고,
+              <br />
+              결과를 검증으로 남깁니다.
+            </h1>
+            <p class="hero__summary">
+              김효식은 트래픽이 몰리는 구간에서 원인을 좁히고, 운영 가능한 구조로
+              재설계한 뒤, 수치와 시나리오로 직접 검증하는 백엔드 엔지니어입니다.
+            </p>
+
+            <div class="hero__actions">
+              <a class="button button--primary" href="#projects">대표 프로젝트 보기</a>
+              <a class="button button--ghost" href="mailto:gytlr339@gmail.com">이메일 보내기</a>
+            </div>
+
+            <ul class="contact-list">
+              <li>
+                <span>Mail</span>
+                <a href="mailto:gytlr339@gmail.com">gytlr339@gmail.com</a>
+              </li>
+              <li>
+                <span>Tel</span>
+                <a href="tel:01049162786">010-4916-2786</a>
+              </li>
+              <li>
+                <span>GitHub</span>
+                <a href="https://github.com/hyosikKim98" target="_blank" rel="noreferrer">
+                  github.com/hyosikKim98
+                </a>
+              </li>
+              <li>
+                <span>Blog</span>
+                <a
+                  href="https://www.notion.so/22509bd4b28c8099a3edcedc03db4905?source=copy_link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Notion Link
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero__visual">
+            <div class="portrait-card">
+              <img src="./assets/profile/profile.png" alt="김효식 프로필 사진" />
+            </div>
+
+            <div class="hero-metrics">
+              <article class="metric-tile">
+                <strong>4.3k req/s</strong>
+                <p>PoC 비교 후 확보한 주문 처리량</p>
+              </article>
+              <article class="metric-tile">
+                <strong>20 slots</strong>
+                <p>티켓팅 활성 슬롯 상한 제어</p>
+              </article>
+              <article class="metric-tile">
+                <strong>1M rows</strong>
+                <p>캐시 비교 검증에 사용한 데이터 규모</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section intro" id="about">
+          <div class="section-heading">
+            <p class="eyebrow">About</p>
+            <h2>현상보다 구조를 먼저 보는 개발자</h2>
+          </div>
+
+          <div class="intro-grid">
+            <article class="intro-card intro-card--statement">
+              <p>
+                사용자가 체감하는 문제를 단순 장애나 느린 응답으로 보지 않고,
+                반복되는 원인이 구조 안에 있는지 먼저 확인합니다. 그래서 설계,
+                동시성 제어, 캐시, 관측 지표까지 한 흐름으로 연결해 해결합니다.
+              </p>
+            </article>
+
+            <article class="intro-card">
+              <span class="intro-card__index">01</span>
+              <h3>문제 정의</h3>
+              <p>
+                병목이 생긴 지점보다 병목이 만들어진 이유를 먼저 좁힙니다.
+                락, 대기열, 캐시 모두 현상 대응이 아니라 원인 분리를 위한 선택으로
+                접근했습니다.
+              </p>
+            </article>
+
+            <article class="intro-card">
+              <span class="intro-card__index">02</span>
+              <h3>적정 복잡도</h3>
+              <p>
+                복잡한 기술을 먼저 채택하지 않습니다. Redis 락과 DB 조건부 차감을
+                같은 시나리오로 비교해 현재 환경에서 더 단순하고 빠른 구조를
+                선택했습니다.
+              </p>
+            </article>
+
+            <article class="intro-card">
+              <span class="intro-card__index">03</span>
+              <h3>검증 습관</h3>
+              <p>
+                JMeter, Grafana, Prometheus 기반으로 결과를 수치화하고, 실제로
+                운영 가능한지까지 확인하는 방식을 선호합니다.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section principles" id="principles">
+          <div class="section-heading">
+            <p class="eyebrow">Principles</p>
+            <h2>포트폴리오를 관통하는 세 가지 기준</h2>
+          </div>
+
+          <div class="principle-grid">
+            <article class="principle-card">
+              <p class="principle-card__label">Define</p>
+              <h3>문제 상황을 재현 가능한 시나리오로 바꿉니다</h3>
+              <p>
+                쇼핑몰 주문 경쟁 시나리오, 티켓팅 200명 혼잡 시나리오처럼 실제
+                충돌이 발생하는 구간을 먼저 명확히 만들고 설계를 시작했습니다.
+              </p>
+            </article>
+
+            <article class="principle-card">
+              <p class="principle-card__label">Design</p>
+              <h3>사용자 요청과 시스템 내부 처리를 분리합니다</h3>
+              <p>
+                대기열로 입장 흐름을 나누고, Kafka 비동기로 결제 처리를 분리해
+                병목이 한 지점으로 몰리지 않도록 구성했습니다.
+              </p>
+            </article>
+
+            <article class="principle-card">
+              <p class="principle-card__label">Verify</p>
+              <h3>선택한 구조가 맞는지 끝까지 검증합니다</h3>
+              <p>
+                처리량, 지연 시간, 최종 재고, 활성 슬롯 유지 여부까지 함께 보고
+                성능과 정합성을 동시에 확인했습니다.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="projects">
+          <div class="section-heading">
+            <p class="eyebrow">Featured Projects</p>
+            <h2>대표 프로젝트</h2>
+          </div>
+
+          <article class="project-panel" id="shopping">
+            <div class="project-panel__header">
+              <div>
+                <p class="project-panel__eyebrow">Project 01</p>
+                <h3>쇼핑몰 API 서버</h3>
+                <p class="project-panel__meta">1인 개발 · 2026.01 - 2026.02 · Spring Boot / Redis / PostgreSQL</p>
+              </div>
+
+              <div class="project-panel__links">
+                <a href="https://github.com/hyosikKim98/shoppingmall" target="_blank" rel="noreferrer">
+                  GitHub 저장소
+                </a>
+              </div>
+            </div>
+
+            <div class="project-overview">
+              <div class="project-overview__copy">
+                <p class="project-overview__summary">
+                  주문 정합성과 조회 성능을 함께 검증한 쇼핑몰 서버 프로젝트입니다.
+                  동시 주문에서 재고 무결성을 보장하고, 현재 환경에 맞는 동시성
+                  제어 방식을 PoC로 비교해 적정 복잡도를 선택했습니다.
+                </p>
+
+                <ul class="tag-list">
+                  <li>동시성 제어</li>
+                  <li>재고 정합성</li>
+                  <li>PoC 검증</li>
+                  <li>Redis 캐시</li>
+                </ul>
+              </div>
+
+              <figure class="media-card">
+                <img src="./assets/portfolio/shopping-arch-pdf.png" alt="쇼핑몰 API 서버 아키텍처" loading="lazy" />
+                <figcaption>쇼핑몰 API 서버 아키텍처</figcaption>
+              </figure>
+            </div>
+
+            <div class="case-grid">
+              <article class="case-card">
+                <div class="case-card__heading">
+                  <p class="case-card__label">Integrity</p>
+                  <h4>동시 주문 환경에서 재고 정합성 보장</h4>
+                </div>
+                <ul class="bullet-list">
+                  <li>상품별 Redis 락과 DB 조건부 차감을 함께 적용해 oversell을 방지했습니다.</li>
+                  <li>락 획득 실패는 <code>429</code>, 재고 부족은 <code>409</code>로 나눠 실패 원인을 명확히 구분했습니다.</li>
+                  <li>재고 100개에 140건 요청이 들어오는 통합 테스트에서도 성공 100건, 실패 40건, 최종 재고 0개를 유지했습니다.</li>
+                </ul>
+              </article>
+
+              <article class="case-card case-card--accent">
+                <div class="case-card__heading">
+                  <p class="case-card__label">PoC</p>
+                  <h4>Redis 락과 DB 조건부 차감을 비교해 더 단순한 구조를 선택</h4>
+                </div>
+                <ul class="bullet-list">
+                  <li>동일 주문 API에 두 가지 전략을 적용해 처리량, 응답 지연, 정합성을 함께 비교했습니다.</li>
+                  <li>단일 인스턴스 환경에서는 DB 조건부 차감만으로도 무결성을 유지할 수 있음을 확인했습니다.</li>
+                  <li>최대 처리량은 약 1.5k req/s에서 4.3k req/s로, p95 지연은 200~450ms에서 150~220ms로 개선됐습니다.</li>
+                </ul>
+              </article>
+            </div>
+
+            <div class="media-grid">
+              <figure class="media-card">
+                <img src="./assets/portfolio/throughput-comparison.png" alt="쇼핑몰 주문 처리량 비교 그래프" loading="lazy" />
+                <figcaption>처리량 비교 그래프</figcaption>
+              </figure>
+              <figure class="media-card">
+                <img src="./assets/portfolio/latency-comparison.png" alt="쇼핑몰 응답 지연 비교 그래프" loading="lazy" />
+                <figcaption>응답 지연 비교 그래프</figcaption>
+              </figure>
+            </div>
+
+            <article class="case-card case-card--wide">
+              <div class="case-card__heading">
+                <p class="case-card__label">Cache</p>
+                <h4>반복 조회 패턴을 기준으로 캐시 효과를 검증</h4>
+              </div>
+
+              <div class="case-card__split">
+                <div>
+                  <ul class="bullet-list">
+                    <li>약 100만 건 데이터를 적재한 뒤, 인기 페이지 10개와 랜덤 페이지 50개 시나리오로 비교했습니다.</li>
+                    <li>Redis 캐시 적용 후 warm-up 제외 기준으로 p50 약 3ms, p95 약 18~21ms 수준을 유지했습니다.</li>
+                    <li>캐시는 단순 속도 개선이 아니라 키 설계, TTL, 무효화, 장애 시 DB fallback까지 포함한 일관성 설계로 접근했습니다.</li>
+                  </ul>
+                </div>
+
+                <figure class="media-card media-card--flush">
+                  <img src="./assets/portfolio/cache-validation-pdf.png" alt="쇼핑몰 캐시 적용 검증 그래프" loading="lazy" />
+                  <figcaption>캐시 적용 검증 결과</figcaption>
+                </figure>
+              </div>
+            </article>
+          </article>
+
+          <article class="project-panel" id="ticketing">
+            <div class="project-panel__header">
+              <div>
+                <p class="project-panel__eyebrow">Project 02</p>
+                <h3>티켓팅 서버</h3>
+                <p class="project-panel__meta">1인 개발 · 2026.02 · Spring Boot / Kafka / Redis / PostgreSQL</p>
+              </div>
+
+              <div class="project-panel__links">
+                <a href="https://github.com/hyosikKim98/Ticketing-server" target="_blank" rel="noreferrer">
+                  GitHub 저장소
+                </a>
+              </div>
+            </div>
+
+            <div class="project-overview">
+              <div class="project-overview__copy">
+                <p class="project-overview__summary">
+                  대기열, 활성 슬롯, 비동기 결제를 결합해 혼잡 구간의 예매 흐름을
+                  안정적으로 통제한 프로젝트입니다. 사용자가 자신의 상태를 이해할
+                  수 있고, 운영자는 병목을 관찰할 수 있는 구조에 집중했습니다.
+                </p>
+
+                <ul class="tag-list">
+                  <li>Redis ZSET 대기열</li>
+                  <li>Lua 원자 처리</li>
+                  <li>Kafka 비동기 결제</li>
+                  <li>관측 대시보드</li>
+                </ul>
+              </div>
+
+              <figure class="media-card">
+                <img src="./assets/portfolio/ticketing-arch-pdf.png" alt="티켓팅 서버 아키텍처" loading="lazy" />
+                <figcaption>티켓팅 서버 아키텍처</figcaption>
+              </figure>
+            </div>
+
+            <div class="case-grid">
+              <article class="case-card">
+                <div class="case-card__heading">
+                  <p class="case-card__label">Queue</p>
+                  <h4>대기열과 활성 슬롯으로 동시 진입량을 제한</h4>
+                </div>
+                <ul class="bullet-list">
+                  <li>Redis ZSET 기반 대기열로 사용자 순번을 관리하고, 활성 슬롯은 최대 20명으로 제한했습니다.</li>
+                  <li>입장 토큰은 Lua 스크립트로 원자적으로 발급해 경쟁 상태에서도 순서가 흐트러지지 않도록 했습니다.</li>
+                  <li>RampUp 20으로 누적 요청 200명을 발생시킨 혼잡 시나리오에서 대기열은 약 172명까지 증가했지만, 활성 슬롯은 20명으로 유지됐습니다.</li>
+                </ul>
+              </article>
+
+              <article class="case-card case-card--accent">
+                <div class="case-card__heading">
+                  <p class="case-card__label">Flow</p>
+                  <h4>결제와 재고 처리를 비동기로 분리해 혼잡 구간을 흡수</h4>
+                </div>
+                <ul class="bullet-list">
+                  <li>결제 요청은 Kafka 이벤트로 분리해 사용자 요청 흐름과 내부 처리 흐름이 같은 구간에서 충돌하지 않도록 설계했습니다.</li>
+                  <li>멱등성 키와 TTL 가드를 적용해 중복 결제 요청을 방지했습니다.</li>
+                  <li>JWT 기반 인증과 관리자 API를 함께 구성해 운영 중 제어와 점검이 가능한 상태를 만들었습니다.</li>
+                </ul>
+              </article>
+            </div>
+
+            <div class="media-grid media-grid--asymmetric">
+              <figure class="media-card">
+                <img src="./assets/portfolio/queue-active-slots.png" alt="대기열과 활성 슬롯 변화 그래프" loading="lazy" />
+                <figcaption>대기열과 활성 슬롯 변화</figcaption>
+              </figure>
+              <article class="insight-card">
+                <p class="insight-card__label">RampUp 20</p>
+                <h4>누적 요청 200명 발생 혼잡 시나리오</h4>
+                <p>
+                  혼잡 구간에서 대기열은 일시적으로 약 172명까지 증가했지만,
+                  활성 슬롯은 누적 요청 인원의 10% 수준인 20명으로 유지됐습니다.
+                  실제 운영 환경은 아니지만 입장 흐름과 결제 처리를 분리했을 때
+                  처리 한계를 넘지 않고 안정적으로 동작한다는 점을 확인했습니다.
+                </p>
+                <ul class="bullet-list">
+                  <li>활성 슬롯이 20명 수준으로 유지되는지 확인</li>
+                  <li>대기 사용자가 줄어드는 동안 처리 이벤트가 급증하지 않는지 확인</li>
+                  <li>슬롯 반환과 만료가 정상적으로 순환하는지 확인</li>
+                </ul>
+              </article>
+            </div>
+
+            <figure class="media-card media-card--wide">
+              <img src="./assets/portfolio/ticketing-dashboard.png" alt="티켓팅 운영 대시보드" loading="lazy" />
+              <figcaption>Prometheus · Grafana 기반 운영 대시보드</figcaption>
+            </figure>
+          </article>
+        </section>
+
+        <section class="section others" id="others">
+          <div class="section-heading">
+            <p class="eyebrow">Other Works</p>
+            <h2>기타 프로젝트</h2>
+          </div>
+
+          <div class="other-grid">
+            <article class="other-card">
+              <div class="other-card__copy">
+                <p class="other-card__label">ESG Works</p>
+                <h3>데이터 관리부터 보고서 작성까지 연결한 ESG 플랫폼</h3>
+                <p>
+                  국제 ESG 기준 기반 데이터 관리, 시각화, 보고서 초안 작성, PDF
+                  변환 및 공유 기능을 제공한 통합 플랫폼입니다.
+                </p>
+                <ul class="bullet-list">
+                  <li>보고서 즐겨찾기 기능 구현</li>
+                  <li>요구 사항에 따른 데이터 기준 설계</li>
+                  <li>Spring Boot / Next.js / MongoDB</li>
+                </ul>
+              </div>
+              <figure class="other-card__media">
+                <img src="./assets/portfolio/other-projects/esg-works-thumb.png" alt="ESG Works 화면" loading="lazy" />
+              </figure>
+            </article>
+
+            <article class="other-card">
+              <div class="other-card__copy">
+                <p class="other-card__label">ESG Dashboard</p>
+                <h3>배출 데이터 입력과 이력 관리를 함께 다룬 대시보드</h3>
+                <p>
+                  기업과 사업장의 배출 데이터를 시각화하고, 입력 및 수정 이력을
+                  함께 관리할 수 있는 대시보드 프로젝트입니다.
+                </p>
+                <ul class="bullet-list">
+                  <li>수정 이력 관리를 위한 데이터 구조 설계 및 구현</li>
+                  <li>배출 계수식 정리와 사업장 페이지 UI 구현</li>
+                  <li>Node.js / Express / Mongoose / Next.js</li>
+                </ul>
+              </div>
+              <figure class="other-card__media">
+                <img src="./assets/portfolio/other-projects/esg-dashboard-thumb.png" alt="ESG 대시보드 화면" loading="lazy" />
+              </figure>
+            </article>
+
+            <article class="other-card">
+              <div class="other-card__copy">
+                <p class="other-card__label">ESG Investment</p>
+                <h3>뉴스 감정 분석과 등급 예측을 결합한 분석 플랫폼</h3>
+                <p>
+                  뉴스 감정 분석과 ESG 등급 예측을 결합해 기업 정보를 탐색할 수
+                  있도록 만든 ESG 투자 대시보드 프로젝트입니다.
+                </p>
+                <ul class="bullet-list">
+                  <li>도메인 모델링과 API 설계</li>
+                  <li>외부 API 연동과 관심 기업 그룹 관리 기능 구현</li>
+                  <li>Spring Boot / MongoDB / Django / Next.js</li>
+                </ul>
+              </div>
+              <figure class="other-card__media">
+                <img src="./assets/portfolio/other-projects/esg-invest-thumb.png" alt="ESG 투자 대시보드 화면" loading="lazy" />
+              </figure>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>김효식 포트폴리오 · Backend Engineer</p>
+        <div class="site-footer__links">
+          <a href="mailto:gytlr339@gmail.com">Mail</a>
+          <a href="https://github.com/hyosikKim98" target="_blank" rel="noreferrer">GitHub</a>
+          <a
+            href="https://www.notion.so/22509bd4b28c8099a3edcedc03db4905?source=copy_link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Blog
+          </a>
+          <a href="./assets/docs/portfolio.pdf" target="_blank" rel="noreferrer">PDF</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
