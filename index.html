@@ -427,6 +427,13 @@
         margin: 16px 0 8px;
         font-size: 13px;
       }
+      .table-scroll {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .table-scroll .cmp-table {
+        min-width: 680px;
+      }
       .cmp-table th,
       .cmp-table td {
         padding: 9px 12px;
@@ -440,9 +447,14 @@
         background: #fff;
         font-size: 12.5px;
       }
+      .cmp-table th.num,
       .cmp-table td.num {
         text-align: right;
         font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      .cmp-table td.result {
+        color: var(--ink-2);
       }
       .cmp-table tbody tr:hover {
         background: var(--line-2);
@@ -917,67 +929,79 @@
           </div>
 
           <div class="cond-box">
-            threads 300 · ramp-up 0.1s · duration 120s · productId 1<br />
-            initial stock 10,000 · PostgreSQL Docker · Redis Docker · access
-            token fixed
+            기준: loadtest/results/order-contention/compare-compose-20260429<br />
+            JMeter 결과 + Prometheus 요약 · 동일 상품 주문 경합 · initial stock
+            10,000
           </div>
 
-          <table class="cmp-table">
-            <thead>
-              <tr>
-                <th>지표</th>
-                <th class="num">DB-only</th>
-                <th class="num">Redis 활성</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>총 요청</td>
-                <td class="num">96,120</td>
-                <td class="num">33,649</td>
-              </tr>
-              <tr>
-                <td>처리량 (req/s)</td>
-                <td class="num">~794.1</td>
-                <td class="num">~274.2</td>
-              </tr>
-              <tr>
-                <td>평균 응답 (ms)</td>
-                <td class="num">358.6</td>
-                <td class="num">1,065.3</td>
-              </tr>
-              <tr>
-                <td>p95 (ms)</td>
-                <td class="num">1,237</td>
-                <td class="num">2,522</td>
-              </tr>
-              <tr>
-                <td>p99 (ms)</td>
-                <td class="num">2,027</td>
-                <td class="num">3,468</td>
-              </tr>
-              <tr>
-                <td>201 성공</td>
-                <td class="num">10,000</td>
-                <td class="num">10,000</td>
-              </tr>
-              <tr>
-                <td>409 재고 부족</td>
-                <td class="num">86,120</td>
-                <td class="num">23,288</td>
-              </tr>
-              <tr>
-                <td>429 락 경합</td>
-                <td class="num">—</td>
-                <td class="num">361</td>
-              </tr>
-              <tr>
-                <td>5xx</td>
-                <td class="num">0</td>
-                <td class="num">0</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-scroll">
+            <table class="cmp-table">
+              <thead>
+                <tr>
+                  <th>항목</th>
+                  <th class="num">Redis 락 활성</th>
+                  <th class="num">DB-only</th>
+                  <th>결과</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Samples</td>
+                  <td class="num">155,309</td>
+                  <td class="num">317,844</td>
+                  <td class="result">DB-only가 더 많은 요청 처리</td>
+                </tr>
+                <tr>
+                  <td>Throughput</td>
+                  <td class="num">1,270.53 req/s</td>
+                  <td class="num">2,590.88 req/s</td>
+                  <td class="result">약 2.0배 증가</td>
+                </tr>
+                <tr>
+                  <td>Average latency</td>
+                  <td class="num">232.84ms</td>
+                  <td class="num">111.86ms</td>
+                  <td class="result">약 52% 감소</td>
+                </tr>
+                <tr>
+                  <td>P95 latency</td>
+                  <td class="num">507ms</td>
+                  <td class="num">352ms</td>
+                  <td class="result">감소</td>
+                </tr>
+                <tr>
+                  <td>P99 latency</td>
+                  <td class="num">1,119ms</td>
+                  <td class="num">772ms</td>
+                  <td class="result">감소</td>
+                </tr>
+                <tr>
+                  <td>HTTP 201</td>
+                  <td class="num">10,000</td>
+                  <td class="num">10,000</td>
+                  <td class="result">동일 재고 수량만큼 성공</td>
+                </tr>
+                <tr>
+                  <td>HTTP 409</td>
+                  <td class="num">145,038</td>
+                  <td class="num">307,844</td>
+                  <td class="result">재고 소진 후 빠르게 실패 반환</td>
+                </tr>
+                <tr>
+                  <td>HTTP 429</td>
+                  <td class="num">271</td>
+                  <td class="num">0</td>
+                  <td class="result">DB-only에서는 lock-busy 미발생</td>
+                </tr>
+                <tr>
+                  <td>Redis commands/sec 평균</td>
+                  <td class="num">5,605.03</td>
+                  <td class="num">0.56</td>
+                  <td class="result">Redis 락 비용 제거</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <p
             style="
@@ -988,17 +1012,18 @@
             "
           >
             두 경로 모두 성공 주문은 <strong>10,000건으로 제한</strong> — 최종
-            안전장치는 DB 조건부 차감이고, Redis 락은 처리를 직렬화하는 역할임을
-            지표로 확인했습니다. Redis 활성 경로는 성능 향상보다
-            <span class="hl">락 경합을 별도 응답으로 분리하는 효과</span>와
-            직렬화 비용을 함께 보여줬습니다.
+            안전장치는 DB 조건부 차감임을 확인했습니다. 같은 조건에서 DB-only
+            경로는 Redis 락 활성 경로보다 처리량이 높고 평균/P95/P99 지연이
+            낮았으며, <span class="hl">Redis 락 비용을 지표로 분리해 확인</span>할
+            수 있었습니다.
           </p>
 
           <div class="note">
             <strong>주의 ·</strong> 로컬 Docker 단일 상품 집중 테스트 결과로
-            "Redis가 항상 빠르다"가 아닌, 같은 조건에서 두 경로의 처리 흐름·실패
-            분류·지연 시간이 어떻게 달라지는지 관측한 자료입니다. 운영 분산
-            환경의 락 경합 안정성까지 검증한 것은 아닙니다.
+            "DB-only가 항상 정답"이라는 의미가 아니라, 단일 애플리케이션 인스턴스와
+            단일 PostgreSQL writer 기준에서 조건부 update가 더 단순하고 빠른
+            선택지였음을 보여주는 자료입니다. 멀티 인스턴스, 외부 writer, 복수
+            자원 순서 제어가 추가되면 Redis 락 필요성은 다시 검증해야 합니다.
           </div>
         </div>
       </article>
